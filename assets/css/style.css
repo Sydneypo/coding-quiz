@@ -1,0 +1,31 @@
+header {
+    display: flex;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav ul li {
+    align-items: center;
+    padding: 15px;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+.btn {
+    text-align: center;
+    margin: auto;
+    display: flex;
+}
