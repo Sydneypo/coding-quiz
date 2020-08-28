@@ -1,8 +1,9 @@
 header {
     display: flex;
+    justify-content: flex-end;
 }
 
-header nav ul {
+header nav  {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
@@ -10,11 +11,19 @@ header nav ul {
     align-items: center;
 }
 
-header nav ul li {
+header nav {
     align-items: center;
     padding: 15px;
 }
 
+header div {
+    padding: 15px;
+    align-items: flex-end;
+}
+
+li {
+    cursor: pointer;
+}
 
 h1 {
     text-align: center;
@@ -22,10 +31,15 @@ h1 {
 
 p {
     text-align: center;
+    padding: 15px 50px;
 }
 
 .btn {
     text-align: center;
     margin: auto;
     display: flex;
+}
+
+#quiz {
+    padding: 50px;
 }

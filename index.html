@@ -9,31 +9,36 @@
 <body>
     <header>
         <nav>
-            <ul>
-                <li>
-                    <a class="viewscores" href="#view-high-scores">View High Scores</a>
-                </li>
-                <li>
-                    <time class="timer">Time: 0</time>
-                </li>
-            </ul>
-        </nav>     
+            <a href="#view-high-scores" class="highscores">View High Scores</a>  
+        </nav>
+        <div class="countdown">
+            Timer
+            <span id="number">0</span>
+        </div>   
     </header>
     <main>
         <h1>Coding Quiz Challenge</h1>
         <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
         <div>
-            <button class=startbutton id="start" type="click" >Start Quiz</button>
+            <button class="btn" id="start" type="click" >Start Quiz</button>
         </div>
-        <section class="question-wrapper">
-            <h2 class="hp-question" id="quiz-question">question goes here</h2>
-            <ol class="answer-list" id="possible-answers">
-                <li name="data-answer" value="A"> A </li>
-                <li name="data-answer" value="b">B</li>
-                <li name="data-answer" value="c">C</li>
-                <li name="data-answer" value="D">D</li>
+        <div id="question">
+            <h3>What house was Harry Potter sorted into?</h3>
+            <ol id="answers">
+                <li data-answer = "A">Sytherin</li> 
+                <li data-answer = "B">Hufflepuff</li>
+                <li data-answer = "C">Gryffindor</li>
+                <li data-answer = "D">Ravenclaw</li>       
             </ol>
-        </section>
+        </div>
+        <div id="results"></div>
+        <div id="view-high-scores">
+            <form>
+                <input type="text" id="playerName" placeholder="Your Initials"></input>
+            </form>
+            <button class="button" id="submitScores" type="click">Submit Score</button>
+        </div>
+
         <script src="./assets/js/script.js"></script>
     </main>
 </body>
