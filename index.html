@@ -9,7 +9,9 @@
 <body>
     <header>
         <nav>
-            <a href="#view-high-scores" class="highscores">View High Scores</a>  
+            <div id="view-high-scores" class="highscores">View High Scores</div>
+            <div id="highScore"></div>
+            
         </nav>
         <div class="countdown">
             Timer
@@ -17,12 +19,15 @@
         </div>   
     </header>
     <main>
-        <h1>Coding Quiz Challenge</h1>
-        <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-        <div>
-            <button class="btn" id="start" type="click" >Start Quiz</button>
+        <div id="instructions"> 
+            <h1>Coding Quiz Challenge</h1>
+            <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+        
+            <div>
+                <button class="btn" id="start" type="click" >Start Quiz</button>
+            </div>
         </div>
-        <div id="question">
+        <div id="question" hidden>
             <h3>What house was Harry Potter sorted into?</h3>
             <ol id="answers">
                 <li data-answer = "A">Sytherin</li> 
@@ -31,10 +36,11 @@
                 <li data-answer = "D">Ravenclaw</li>       
             </ol>
         </div>
+        <div id="userAnswer"></div>
         <div id="results"></div>
-        <div id="view-high-scores">
+        <div id="submit-info" hidden>
             <form>
-                <input type="text" id="playerName" placeholder="Your Initials"></input>
+                <input type="text" id="playerName" name="playerInitials" placeholder="Your Initials"></input>
             </form>
             <button class="button" id="submitScores" type="click">Submit Score</button>
         </div>

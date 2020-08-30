@@ -1,38 +1,92 @@
 // variables
 var questionDiv = document.querySelector("#question");
-questionDiv.addEventListener("click", function(event) {
-    console.log(event.target.getAttribute("data-answer"));
-    currentQuestion++;
-    displayCurrentQuestion();
-
-});
- 
-var main = document.querySelector("main");
-var initials = document.querySelector("#playerName");
-var submitButton = document.querySelector("#submitScores");
-
-// var savedScores = localStorage.getItem("highScores");
-// if (savedScores != null) {console.log(savedScores)};
+//questionDiv.addEventListener("click", selectAnswer);
 
 
 
-
-var savedInitials = localStorage.getItem("initials")
-if (savedInitials != null) {
-    console.log(savedInitials);
+var startQuiz = function(event) {
+    var number = 75;
+    var timerId = setInterval(function(){
+        number--;
+    document.getElementById("question").removeAttribute("hidden");
+    document.getElementById("instructions").setAttribute("hidden", true);
+    var numberSpan = document.querySelector("#number");
+        numberSpan.textContent = number;
+    if (number <= 0 || currentQuestion > questions.length - 1) {
+        clearInterval(timerId);
+        var getScore = document.getElementById("submit-info");
+        getScore = document.createElement("ul");
+        getScore.textContent = number;
+        var timeLeft = document.getElementById("submit-info");
+        timeLeft.appendChild(getScore);
+        quizOver();
+    }
+    
+    }, 1000);
 }
 
-submitButton.addEventListener("click", function(){
-    var newInitial = initials.value; 
-    localStorage.setItem("initials", newInitial)
-    // var newHighScore = timeLeft.value; 
-    // localStorage.setItem("highScores", newHighScore)
-})
 
-var highScore = document.querySelector("#view-high-score");
-console.log(highScore);
 
-// set high score = time left 
+var startButton = document.getElementById("start");
+startButton.addEventListener("click", startQuiz);
+
+var selectAnswer = function(event) {
+    var userAnswer = event.target.getAttribute("data-answer");
+    console.log(event.target.getAttribute("data-answer"));
+    var answerDiv = document.getElementById("userAnswer");
+    if (userAnswer == questions[currentQuestion].correctAnswer) {  
+        answerDiv.textContent = "Correct!";
+
+    } else {
+        answerDiv.textContent = "Wrong!";
+    }
+
+    currentQuestion++;
+    displayCurrentQuestion();
+}
+
+questionDiv.addEventListener("click", selectAnswer);
+
+
+
+var main = document.querySelector("main");
+
+
+var submitButton = document.querySelector("#submit-info");
+submitButton.addEventListener("click", function(event) {
+    nameScoreField();
+});
+
+var nameScoreField = function(event) {
+    var playerInitials = document.querySelector("input[name='playerInitials']").value;
+        console.log(playerInitials);
+
+    var createList = document.createElement("ul");
+    createList.textContent = playerInitials;
+    var viewHighScoresDiv = document.querySelector("#submit-info");
+    viewHighScoresDiv.appendChild(createList);
+
+    saveItems();
+  
+};
+
+var quizOver = function(event) {
+    document.getElementById("submit-info").removeAttribute("hidden");
+    document.getElementById("userAnswer").setAttribute("hidden", true);
+    saveItems();
+};
+
+// var saveValues = function(event) {
+//     var savedInitials = document.querySelector("input[name='playerInitials']").value;
+//     localStorage.setItem("Initials", savedInitials);
+//     var newHighScore = timeLeft; 
+//     localStorage.setItem("highScores", newHighScore);
+    
+// }
+ 
+
+
+  
 
 
 
@@ -173,21 +227,23 @@ function displayCurrentQuestion() {
     // if user selected answer is wrong display "wrong" and deduct 5 seconds off timer 
     }
     questionDiv.appendChild(answerOl);
+};
+
+var saveItems = function() {
+    var playerInitials = document.querySelector("input[name='playerInitials']").value
+    localStorage.setItem("Initials", playerInitials);
+
+};
+
+
+var viewHighScores = function() {
+    document.getElementById("playerName").setAttribute("hidden", true);
+    document.getElementById("submitScores").setAttribute("hidden", true);
+
 }
 
 
-var number = 75;
-var timerId = setInterval(function(){
-    number--;
-    var numberSpan = document.querySelector("#number");
-    numberSpan.textContent = number;
-    if (number <= 0) {
-        clearInterval(timerId);
-        console.log("timer stopped");
-    }
-}, 1000)
+
+
 
 // click view high scores link and taken to a list of previous high scores
-
-
-
