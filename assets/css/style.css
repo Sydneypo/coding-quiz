@@ -43,3 +43,18 @@ p {
 #quiz {
     padding: 50px;
 }
+
+#question {
+    padding: 0px 100px;
+}
+
+#userAnswer {
+    text-align: center;
+    font-size: 22px;
+    font-weight: lighter;
+    font-style: italic;
+}
+
+#submit-info {
+    padding: 0px 100px;
+}
